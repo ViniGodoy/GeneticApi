@@ -30,7 +30,7 @@ public class BitGenome {
     public static BitGenome createRandom(int bits) {
         var random = new Random();
         var genes = new BitGenome(bits);
-        for (int i = 0; i < bits; i++) {
+        for (var i = 0; i < bits; i++) {
             genes.set(i, random.nextBoolean());
         }
         return genes;
@@ -93,7 +93,7 @@ public class BitGenome {
      * @return An unsigned number, composed by all bits.
      */
     public long getUnsigned(int pos, int bits) {
-        long num = 0;
+        var num = 0L;
 
         for (var i = pos; i < pos + bits; i++) {
             num = (num << 1) + (genes.get(i) ? 1 : 0);

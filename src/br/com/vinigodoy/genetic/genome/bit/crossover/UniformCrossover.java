@@ -35,10 +35,10 @@ public class UniformCrossover implements BitCrossoverMethod {
 
     public Two<BitGenome> crossover(BitGenome genome1, BitGenome genome2) {
         var random = new Random();
-        var children = new Two<BitGenome>(new BitGenome(genome1.size()),
+        var children = new Two<>(new BitGenome(genome1.size()),
                 new BitGenome(genome2.size()));
 
-        for (int i = 0; i < genome1.size(); i++) {
+        for (var i = 0; i < genome1.size(); i++) {
             if (random.nextDouble() <= chancePerBit) {
                 children.getOne().set(i, genome2.get(i));
                 children.getTwo().set(i, genome1.get(i));

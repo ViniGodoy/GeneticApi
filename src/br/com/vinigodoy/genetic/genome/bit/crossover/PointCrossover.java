@@ -38,19 +38,19 @@ public class PointCrossover implements BitCrossoverMethod {
             throw new IllegalArgumentException("Provide at least one cut!");
         }
 
-        cutSet = new HashSet<Integer>(cuts.length);
+        cutSet = new HashSet<>(cuts.length);
         for (var cut : cuts) {
             cutSet.add(cut);
         }
     }
 
     public Two<BitGenome> crossover(BitGenome genome1, BitGenome genome2) {
-       var mixes = new Two<BitGenome>(new BitGenome(genome1.size()),
+       var mixes = new Two<>(new BitGenome(genome1.size()),
                 new BitGenome(genome2.size()));
 
         var flip = false;
 
-        for (int i = 0; i < genome1.size(); i++) {
+        for (var i = 0; i < genome1.size(); i++) {
             if (cutSet.contains(i)) {
                 flip = !flip;
             }

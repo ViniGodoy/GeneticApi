@@ -23,7 +23,7 @@ public abstract class AbstractWheelSelection<T extends Individual> implements Se
         var rouletteResults = randomizeSums(amount, population);
 
         var selected = new ScoredPopulation<T>();
-        long sum = 0;
+        var sum = 0L;
         for (var individual : population) {
             sum += individual.getScore();
             while (rouletteResults.size() > 0 && rouletteResults.get(0) < sum) {

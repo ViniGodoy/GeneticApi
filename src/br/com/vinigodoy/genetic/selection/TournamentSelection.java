@@ -22,7 +22,7 @@ public class TournamentSelection<T extends Individual> implements SelectionFunct
 
         var selected = new ScoredPopulation<T>();
         
-        for (int i = 0; i < amount; i++)
+        for (var i = 0; i < amount; i++)
         {
             var one = population.get(random.nextInt(population.size()));
             var two = population.get(random.nextInt(population.size()));

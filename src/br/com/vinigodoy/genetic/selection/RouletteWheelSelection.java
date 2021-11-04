@@ -37,7 +37,7 @@ public class RouletteWheelSelection<T extends Individual> extends AbstractWheelS
     }
 
     private long randomLong(long sum) {
-        long roulette = Long.MAX_VALUE;
+        var roulette = Long.MAX_VALUE;
         while (roulette > sum) {
             roulette = random.nextLong();
         }

@@ -19,7 +19,7 @@ public class RandomMutation implements BitMutationMethod {
 
     public void mutate(BitGenome genes) {
         Random random = new Random();
-        for (int i = 0; i < genes.size(); i++) {
+        for (var i = 0; i < genes.size(); i++) {
             if (random.nextDouble() <= ratePerBit) {
                 genes.set(i, !genes.get(i));
             }

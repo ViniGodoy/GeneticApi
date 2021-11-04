@@ -15,7 +15,7 @@ public class Generation<T extends Individual> {
     private static Random random = new Random();
 
     private int number;
-    private ScoredPopulation<T> scored = new ScoredPopulation<T>();
+    private ScoredPopulation<T> scored = new ScoredPopulation<>();
     private FitnessFunction<T> fitnessFunction;
     private ScalingFunction<T> scalingFunction;
     private SelectionFunction<T> selectionFunction;
@@ -33,11 +33,11 @@ public class Generation<T extends Individual> {
      * <li>do ellitism;
      * </ul>
      * 
-     * @param population
-     * @param fitnessFunction
+     * @param population Population to apply
+     * @param fitnessFunction Fitness function
      */
     public Generation(List<? extends T> population, FitnessFunction<T> fitnessFunction) {
-        this(population, fitnessFunction, new NoScaling<T>(), new AsymptoticSelection<T>(), 0.75, 0.1, true);
+        this(population, fitnessFunction, new NoScaling<>(), new AsymptoticSelection<>(), 0.75, 0.1, true);
     }
 
     public Generation(List<? extends T> population, FitnessFunction<T> fitnessFunction,
@@ -91,7 +91,7 @@ public class Generation<T extends Individual> {
     }
 
     private void doCalculations(List<? extends T> population) {
-        population.forEach(i -> scored.add(new Scored<T>(i, fitnessFunction)));
+        population.forEach(i -> scored.add(new Scored<>(i, fitnessFunction)));
         scored.sort();
     }
 
@@ -110,7 +110,7 @@ public class Generation<T extends Individual> {
         var selected = selectionFunction.select(scaled, scaled.size());
 
         // For each selected pair
-        int i = 0;
+        var i = 0;
         while (next.size() < size()) {
             var p1 = selected.get(i).getIndividual();
             var p2 = selected.get(i + 1).getIndividual();
@@ -137,7 +137,7 @@ public class Generation<T extends Individual> {
             children.forEach(child -> next.add((T) child));
         }
 
-        return new Generation<T>(next, this);
+        return new Generation<>(next, this);
     }
 
     private int size() {
